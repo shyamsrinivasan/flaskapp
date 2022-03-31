@@ -1,38 +1,63 @@
+* {
+	box-sizing: border-box;
+}
 body{
 	background-color: #C8C8C8;
 	background-color: hsl(0, 0%, 78%);
 }
-header{
-	font-family: Arial;
-	padding: 20px;
-	text-decoration: none;
+
+header #pagetop, #topbar{
+	width: 98%;
+	margin-bottom: 10px;
+	margin-left: 10px;
+	position: relative;
+	/*background-color: whitesmoke;*/
 }
-header a{
+
+header #pagetop{
 	font-family: Arial;
+	background-color: darkcyan;
+	color: white;	
 	text-decoration: none;
+	text-align: center;	
+	padding:  15px 10px 15px 10px;	
+	margin-top: 10px;
+	margin-right: 10px;
+}
+
+.navbutton{
+	font-family: Arial;
+	font-weight: bold;
+	text-align: center;
+	text-decoration: none;	
 	background-color: black;
 	color: white;
-	padding: 8px;
+	padding: 7px;
+	width: 16%;
+	height: 30px;
+	margin: 0px 0px 0px 0px;
+	display: inline-block;
+	position: relative;
+	left: 5px;
 }
-header a:hover, header a:active{
+
+.navbutton:hover, .navbutton:active{
 	background-color: darkblue;
 	color: white;
 }
-h1{
-	font-family: sans-serif;	
-	background-color: darkcyan;
-	color: white;
-	padding:  20px;
-	text-decoration: none;
-	text-align: center;
+
+.navbar{
+	background-color: whitesmoke;
+	margin: 20px 0px 20px 10px;	
+	height: 30px;	
+	width:  8.33%;
 }
-footer a{
-	font-family:  Arial;
-	font-size: 12pt;
-	color: black;
+
+.footernav:hover, .footernav:active{
 	text-decoration: none;
-}
-footer a:hover, footer a:active{
-	text-decoration: underline;
 	color: darkblue;
+}
+
+.footernav:hover{
+	text-decoration: underline;
 }
