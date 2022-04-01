@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>Tax Administration</title>
+{% endblock %}
+
+{% block link %}
+<link href="{{ url_for('static', filename='stylesheets/index.css') }}"  type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block header %}
+<header>
+	<h1 id="pagetop">Tax Administration Portal</h1>		
+</header>
+{% endblock %}
+
+{% block navbar %}
+<div id="topbar">
+	<a class="navbutton" href="calculate.html" title="Calculate taxes page">Calculate taxes</a>
+	<a class="navbutton" href="https://eportal.incometax.gov.in/iec/foservices/#/login" title="File income tax return" target="_blank">e-File Returns</a>	
+</div>	
+{% endblock %}
+
+{% block footer %}
+<footer>
+	<a href="../index.html" title="go back to homepage">Back Home</a>
+</footer>
+{% endblock %}

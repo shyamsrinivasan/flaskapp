@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>Client administration</title>
+{% endblock %}
+
+{% block link %}
+<link href="{{ url_for('static', filename='stylesheets/index.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block header %}
+<header>
+	<h1 id="pagetop">Client Administration Portal</h1>	
+</header>	
+{% endblock %}
+
+{% block navbar %}
+<div id="topbar">
+	<a class="navbutton" href="client/addclient.html" title="add client page">Add Client</a>
+	<a class="navbutton" href="client/existingclient.html" title="existing client page">Existing Client</a>
+</div>
+{% endblock %}
+
+{% block footer %}
+<footer>
+	<a class="footernav" href="../index.html" title="back to administration page">Administration</a>
+	<a class="footernav" href="../../index.html" title="back to home page">Back Home</a>
+</footer>
+{% endblock %}

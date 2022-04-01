@@ -1,9 +1,8 @@
 {% extends "base.html" %}
 
-
 {% block title %}
-<title>Database administration</title>
-{% endblock %}	
+<title>Homepage</title>
+{% endblock %}
 
 {% block link %}
 <link href="{{ url_for('static', filename='stylesheets/index.css') }}" type="text/css" rel="stylesheet" />
@@ -11,20 +10,22 @@
 
 {% block header %}
 <header>
-	<h1 id="pagetop">Administration Portal</h1>		
+	<h1 id="pagetop">Demeter Farms Tax Client Management System</h1>
 </header>
 {% endblock %}
 
 {% block navbar %}
 <div id="topbar">
-	<a class="navbutton" href="client/index.html" title="client administration page">Client Administration</a>
-	<a class="navbutton" href="office/index.html" title="office administration page">Office Administartion</a>	
-	<a class="navbutton" href="../index.html" title="login page">Login</a>
+	<a class="navbutton" href="index.html" title="homepage">Home</a>
+	<a class="navbutton" href="admin/index.html" title="administration page">Administration</a>
+	<a class="navbutton" href="taxes/index.html" title="taxes page">Taxation</a>	
+	<a class="navbutton" href="index.html" title="login page">Login</a>
 </div>
 {% endblock %}
 
-{% block footer %}
-<footer>
-	<a class="footernav" href="../index.html" title="back to home page">Back Home</a>
-</footer>	
+{% block content %}
+<p class="navbar"></p>
+<p class="navbar"></p>
+<p class="navbar"></p>	
 {% endblock %}
+
