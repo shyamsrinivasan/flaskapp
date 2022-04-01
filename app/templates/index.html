@@ -1,8 +1,30 @@
 {% extends "base.html" %}
 
-{% block content %}
-<h1>Hello, {{ user.username }}!</h1>
-		{% for post in posts %}
-		<div><p>{{post.author.username}} says: <b>{{post.body}}</b></p></div>
-		{% endfor %}
+
+{% block title %}
+<title>Database administration</title>
+{% endblock %}	
+
+{% block link %}
+<link href="{{ url_for('static', filename='stylesheets/index.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block header %}
+<header>
+	<h1 id="pagetop">Administration Portal</h1>		
+</header>
+{% endblock %}
+
+{% block navbar %}
+<div id="topbar">
+	<a class="navbutton" href="client/index.html" title="client administration page">Client Administration</a>
+	<a class="navbutton" href="office/index.html" title="office administration page">Office Administartion</a>	
+	<a class="navbutton" href="../index.html" title="login page">Login</a>
+</div>
+{% endblock %}
+
+{% block footer %}
+<footer>
+	<a class="footernav" href="../index.html" title="back to home page">Back Home</a>
+</footer>	
 {% endblock %}
