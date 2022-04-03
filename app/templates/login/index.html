@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>User/Administrator Login</title>
+{% endblock %}
+
+{% block link %}
+<link href="{{ url_for('static', filename='stylesheets/index.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block header %}
+<header>
+	<h1 id="loginheader">User/Administrator System Login</h1>
+</header>
+{% endblock %}
+
+{% block content %}
+<div class="loginform">
+	<form action="{{ url_for('login_home') }}" method="post">
+		<label for="usrname">Username:</label>
+		<input type="text" placeholder="Username" required="required" id="usrname" name="username"/>
+		<label for="passwrd">Password:</label>
+		<input type="password" placeholder="Password" required="required" id="passwrd"  name="password"/>
+		<!-- <p id="usrnametitle">Username:</p>
+		<input type="text" id="usrname" name="username"/>
+		<p id="passwrdtitle">Password:</p>
+		<input type="password" id="passwrd"  name="password"/> -->
+		<button type="submit" id="loginsubmt" name="submit">Submit</button>
+	</form>
+</div>
+{% endblock %}
+
+{% block footer %}
+<footer>
+	<a class="footernav" href="../admin/index.html" title="back to administration page">Administration</a>
+	<a class="footernav" href="../index.html" title="back to home page">Back Home</a>
+</footer>
+{% endblock %}
+
+<!-- <html>
+	<head>
+		<title>Login</title>
+	</head>
+	<body>
+		<form action = "http://localhost:5000/login" method="post">
+			<p>Enter name:</p>
+			<p><input type="text" name="nm"/></p>
+			<p><input type="submit" value="submit"/></p>
+		</form>
+	</body>
+</html> -->

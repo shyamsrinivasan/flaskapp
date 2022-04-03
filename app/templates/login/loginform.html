@@ -1,0 +1,9 @@
+{% extends "login/base.html" %}
+
+{% block link %}
+<link href="{{ url_for('static', filename='stylesheets/index.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block content %}
+<h1>You are logged in as {{ user|capitalize }}</h1>
+{% endblock %}
