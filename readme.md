@@ -9,4 +9,9 @@ Steps to run browser-sync on CLI:
 * Run `browser-sync start --server --directory --files "*"`
 * "\*" can be substituted with filenames of only select files that need to be tested
 
+Installing Python from Ubuntu PPA for WSL-Ubuntu:
+* `sudo add-apt-repository ppa:deadsnakes/ppa`
+* `sudo apt update && sudo apt upgrade`
+* `sudo apt install python3.10`
+
 
