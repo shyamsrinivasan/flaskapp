@@ -35,7 +35,10 @@ Requisites for compiling [Python](https://www.python.org/downloads/) from source
 
 Using [SQLAlchemy](https://www.sqlalchemy.org/) with MySQL using [mysqlclient](https://pypi.org/project/mysqlclient/) package as connector (build from source):
 * Download and install [MariaDB C Connector](https://mariadb.com/downloads/connectors/) at the default location (C:\Program Files\MariaDB\MariaDB Connector for C)
+* Install MySQL (if not available with distribution) in the WSL Ubuntu distribution using `sudo apt-get install mysql-server`
+* Install mysql-config using `sudo apt-get install libmysqlclient-dev`
 * `pip install mysqlclient`
+
 
 
 
