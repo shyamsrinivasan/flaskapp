@@ -1,6 +1,9 @@
 from flask import render_template, request
 from app import app
-
+# from flask_bs4 import Bootstrap
+#
+#
+# Bootstrap(app)
 
 @app.route('/')
 @app.route('/index.html')
