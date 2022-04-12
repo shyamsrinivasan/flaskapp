@@ -1,0 +1,3 @@
+include view files for different folders in templates directory and
+include following files in directory:
+__init__.py
