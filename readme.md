@@ -42,40 +42,40 @@
 * `pip install mysqlclient`
 
 ## Directory (divisional) structure for using Flask Blueprints with App Factory functions:
-flaskapp/
-	app/
-	    __init__.py
-	    config.py
-	    admin/
-	        __init__.py
-	        views.py
-	        static/
-	        templates/
-	    home/
-	        __init__.py
-	        views.py
-	        static/
-	        templates/
-	    control_panel/
-	        __init__.py
-	        views.py
-	        static/
-	        templates/
-	    models.py
+* flaskapp/
+	** app/
+	    *** __init__.py
+	    *** config.py
+	    *** admin/
+	        **** __init__.py
+	        **** views.py
+	        **** static/
+	        **** templates/
+	    *** home/
+	        **** __init__.py
+	        **** views.py
+	        **** static/
+	        **** templates/
+	    *** control_panel/
+	        **** __init__.py
+	        **** views.py
+	        **** static/
+	        **** templates/
+	    *** models.py
 
 ## Directory (functional) structure for using Flask Blueprints with App Factory functions:
-flaskapp/
-	app/
-	    __init__.py
-	    config.py
-	    static/
-	    templates/
-	        home/
-	        admin/
-	    views/
-	        __init__.py
-	        home.py
-	        admin.py
-	    models.py
+* flaskapp/
+	** app/
+	   *** __init__.py
+	   *** config.py
+	   *** static/
+	   *** templates/
+	       **** home/
+	       **** admin/
+	   *** views/
+	       **** __init__.py
+	       **** home.py
+	       **** admin.py
+	   *** models.py
 
 
