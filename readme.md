@@ -45,61 +45,61 @@
 flaskapp/
 
 
-&nbsp; app/
+&nbsp;`app/`
 
 
-&nbsp;&nbsp; __init__.py
+&nbsp;&nbsp;`__init__.py`
 
 
-&nbsp;&nbsp;&nbsp; config.py
+&nbsp;&nbsp;&nbsp;`config.py`
 
 
-&nbsp;&nbsp;&nbsp;admin/
+&nbsp;&nbsp;&nbsp;`admin/`
 
 
-&nbsp;&nbsp;&nbsp;&nbsp;__init__.py
+&nbsp;&nbsp;&nbsp;&nbsp;`__init__.py`
 
 
-&nbsp;&nbsp;&nbsp;&nbsp;views.py
+&nbsp;&nbsp;&nbsp;&nbsp;`views.py`
 
 
-&nbsp;&nbsp;&nbsp;&nbsp;static/
+&nbsp;&nbsp;&nbsp;&nbsp;`static/`
 
 
-&nbsp;&nbsp;&nbsp;&nbsp;templates/
+&nbsp;&nbsp;&nbsp;&nbsp;`templates/`
 
 
-&nbsp;&nbsp;&nbsp;home/
+&nbsp;&nbsp;&nbsp;`home/`
 
 
-&nbsp;&nbsp;&nbsp;&nbsp;__init__.py
+&nbsp;&nbsp;&nbsp;&nbsp;`__init__.py`
 
 
-&nbsp;&nbsp;&nbsp;&nbsp;views.py
+&nbsp;&nbsp;&nbsp;&nbsp;`views.py`
 
 
-&nbsp;&nbsp;&nbsp;&nbsp;static/
+&nbsp;&nbsp;&nbsp;&nbsp;`static/`
 
 
-&nbsp;&nbsp;&nbsp;&nbsp;templates/
+&nbsp;&nbsp;&nbsp;&nbsp;`templates/`
 	    
 
-&nbsp;&nbsp;&nbsp;control_panel/
+&nbsp;&nbsp;&nbsp;`control_panel/`
 
 
-&nbsp;&nbsp;&nbsp;&nbsp; __init__.py
+&nbsp;&nbsp;&nbsp;&nbsp;`__init__.py`
 
 
-&nbsp;&nbsp;&nbsp;&nbsp;views.py
+&nbsp;&nbsp;&nbsp;&nbsp;`views.py`
 
 
-&nbsp;&nbsp;&nbsp;&nbsp;static/
+&nbsp;&nbsp;&nbsp;&nbsp;`static/`
 
 
-&nbsp;&nbsp;&nbsp;&nbsp;templates/
+&nbsp;&nbsp;&nbsp;&nbsp;`templates/`
 
 
-&nbsp;&nbsp;&nbsp;models.py
+&nbsp;&nbsp;&nbsp;`models.py`
 
 ## Directory (functional) structure for using Flask Blueprints with App Factory functions:
 * flaskapp/
