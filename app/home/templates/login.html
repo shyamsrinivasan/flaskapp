@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 
 {% block title %}
-<title>User/Administrator Login</title>
+User/Administrator Login
 {% endblock %}
 
-{% block link %}
-<link href="{{ url_for('static', filename='stylesheets/index.css') }}" type="text/css" rel="stylesheet" />
+{% block styles %}
+<link href="{{ url_for('static', filename='stylesheets/custom.css') }}" type="text/css" rel="stylesheet" />
 {% endblock %}
 
 {% block header %}
@@ -16,7 +16,7 @@
 
 {% block content %}
 <div class="loginform">
-	<form action="{{ url_for('login_home') }}" method="post">
+	<form action="{{ url_for('home.login_home') }}" method="post">
 		<label for="usrname">Username:</label>
 		<input type="text" placeholder="Username" required="required" id="usrname" name="username"/>
 		<label for="passwrd">Password:</label>

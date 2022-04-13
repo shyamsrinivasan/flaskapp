@@ -12,7 +12,7 @@ def index():
 
 
 @home.route('/login.html')
-def admin_home():
+def login_home():
     return render_template('/login.html')
 
 
