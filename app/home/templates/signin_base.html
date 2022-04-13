@@ -2,16 +2,20 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	{% if user %}
-	<title>Welcome {{ user }}</title>
-	{% else %}
-	<title>Welcome Anonymous</title>
-	{% endif %}
-	{% block link %}{% endblock %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.84.0">
+	
+	<title>{% block title %}{% endblock %}</title>
+
+	{% block styles %}
+	{% endblock %}	
 </head>
 <body>
-	{% block content %}
+	{% block navbar %}
 	{% endblock %}
+	{% block main %}
+	{% endblock %}	
 </body>
 </html>
