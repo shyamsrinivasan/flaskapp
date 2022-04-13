@@ -2,29 +2,32 @@
 
 
 {% block title %}
-<title>Database administration</title>
+Database administration
 {% endblock %}	
 
-{% block link %}
-<link href="{{ url_for('static', filename='stylesheets/index.css') }}" type="text/css" rel="stylesheet" />
-{% endblock %}
-
-{% block header %}
-<header>
-	<h1 id="pagetop">Administration Portal</h1>		
-</header>
+{% block styles %}
+<link href="{{ url_for('static', filename='css/custom.css') }}" type="text/css" rel="stylesheet" />
 {% endblock %}
 
 {% block navbar %}
-<div id="topbar">
-	<a class="adminnavbutton" href="client/index.html" title="client administration page">Client Administration</a>
-	<a class="adminnavbutton" href="office/index.html" title="office administration page">Office Administartion</a>	
-	<a class="navbutton" href="../login/index.html" title="login page">Login</a>
-</div>
-{% endblock %}
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark text-white">
+	<div class="container d-flex flex-wrap">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a class="navbar-brand d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none" href="#">Fixed navbar</a>
+        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">        
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li><a href="{{ url_for('home.index') }}" class="nav-link px-2 text-secondary">Home</a></li>
+          <li><a href="{{ url_for('admin.index') }}" class="nav-link px-2 text-white">Administration</a></li>
+          <li><a href="#" class="nav-link px-2 text-white">Taxation</a></li>
+          <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
+          <li><a href="#" class="nav-link px-2 text-white">About</a></li>
+        </ul>            
 
-{% block footer %}
-<footer>
-	<a class="footernav" href="../index.html" title="back to home page">Back Home</a>
-</footer>	
+        <ul class="nav text-end">
+          <li><a href="{{ url_for('home.login_home') }}" class="btn btn-outline-light me-2">Login</a></li>
+          <li><button type="button" class="btn btn-warning">Sign-up</button></li>
+        </ul>
+      </div>
+    </div>	
+</nav>  
 {% endblock %}

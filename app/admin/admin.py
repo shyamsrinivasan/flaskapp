@@ -1,13 +1,13 @@
 from flask import Blueprint, render_template
 
 
-admin = Blueprint('admin', __name__)
+admin_bp = Blueprint('admin', __name__, template_folder='templates')
 
 
-@admin.route('/admin')
-@admin.route('/admin/index.html')
-def admin_home():
-    return render_template('/admin/index.html')
+@admin_bp.route('/admin')
+@admin_bp.route('/admin/index.html')
+def index():
+    return render_template('/index.html')
 
 
 # @admin.route('/admin/clients')
