@@ -10,76 +10,42 @@ User Login
 {% endblock %}
 
 {% block navbar %}
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark text-white">
-	<div class="container d-flex flex-wrap">
-      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-      	<a class="navbar-brand d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none" href="#">Fixed navbar</a>
-        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">     
-        </a>
-
-        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <li><a href="{{ url_for('home.index') }}" class="nav-link px-2 text-secondary">Home</a></li>
-          <li><a href="{{ url_for('admin.index') }}" class="nav-link px-2 text-white">Administration</a></li>
-          <li><a href="#" class="nav-link px-2 text-white">Taxation</a></li>
-          <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
-          <li><a href="#" class="nav-link px-2 text-white">About</a></li>
-          <li class="nav"><a href="#" type="button" class="btn btn-warning text-end">Sign-up</a></li>
-        </ul>   
-        
-
-        
-      </div>
-    </div>	
-</nav>  
+<nav class="py-2 bg-dark text-white border-bottom">
+  <div class="container d-flex flex-wrap">
+    <ul class="nav me-auto">
+      <li class="nav-item"><a href="{{ url_for('home.index') }}" class="nav-link text-white px-2 active" aria-current="page">Home</a></li>
+      <!-- <li class="nav-item"><a href="{{ url_for('admin.index') }}" class="nav-link text-white px-2">Adminstration</a></li> -->
+      <li class="nav-item"><a href="#" class="nav-link text-white px-2">Tax e-Filing</a></li>
+      <li class="nav-item"><a href="#" class="nav-link text-white px-2">FAQs</a></li>
+      <li class="nav-item"><a href="{{ url_for('home.about') }}" class="nav-link text-white px-2">About</a></li>
+    </ul>
+    <ul class="nav">
+      <li class="nav-item"><button type="button" class="btn btn-primary">Sign-up</button></li>
+    </ul>
+  </div>
+</nav>
 {% endblock %}
 
 {% block main %}
-<main class="form-signin text-center">
-<form id="signin_form" action="{{ url_for('home.login_home') }}" method="post">
-	<img class="mb-4" src="../../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
-	<h1 class="h3 mb-3 fw-normal">User login</h1>
+<main>
+	<div class="container-md form-signin">
+		<form id="signin_form" action="{{ url_for('home.login_home') }}" method="post">
+	    <!-- <img class="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> -->
+	    <h1 class="h3 mb-3 fw-normal text-center">User Login</h1>
 
-	<div class="form-floating">
-	  <input type="text" class="form-control" id="floatingInput" placeholder="username" name="username" required="required">
-	  <label for="floatingInput">Username</label>
-	</div>
-	<div class="form-floating">
-	  <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password" required="required">
-	  <label for="floatingPassword">Password</label>
-	</div>
-	
-	<button class="w-100 btn btn-lg btn-primary" type="submit" name="submit" form="signin_form">Sign in</button>
-	<p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
-</form> 
+	    <div class="form-floating">
+	      <input type="text" class="form-control" id="floatingInput" placeholder="username" name="username" required="required">
+	      <label for="floatingInput">Username</label>
+	    </div>
+	    <br>
+	    <div class="form-floating">
+	      <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password" required="required">
+	      <label for="floatingPassword">Password</label>
+	    </div>	 
+	    <br>   
+	    <button class="w-100 btn btn-lg btn-primary" type="submit" form="signin_form">Login</button>
+	    <p class="mt-5 mb-3 text-muted">&copy; Shyam 2022</p>
+	  </form>	
+	</div>  
 </main>
 {% endblock %}
-
-
-{% block content %}
-<!-- <div class="loginform">
-	<form action="{{ url_for('home.login_home') }}" method="post">
-		<label for="usrname">Username:</label>
-		<input type="text" placeholder="Username" required="required" id="usrname" name="username"/>
-		<label for="passwrd">Password:</label>
-		<input type="password" placeholder="Password" required="required" id="passwrd"  name="password"/>
-		<p id="usrnametitle">Username:</p>
-		<input type="text" id="usrname" name="username"/>
-		<p id="passwrdtitle">Password:</p>
-		<input type="password" id="passwrd"  name="password"/>
-		<button type="submit" id="loginsubmt" name="submit">Submit</button>
-	</form>
-</div> -->
-{% endblock %}
-
-<!-- <html>
-	<head>
-		<title>Login</title>
-	</head>
-	<body>
-		<form action = "http://localhost:5000/login" method="post">
-			<p>Enter name:</p>
-			<p><input type="text" name="nm"/></p>
-			<p><input type="submit" value="submit"/></p>
-		</form>
-	</body>
-</html> -->
