@@ -5,27 +5,6 @@ from app import app
 #
 # Bootstrap(app)
 
-@app.route('/')
-@app.route('/index.html')
-def index():
-    return render_template('index.html')
-
-
-@app.route('/login', methods=['GET', 'POST'])
-@app.route('/login/index.html', methods=['GET', 'POST'])
-def login_home():
-    if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
-        return render_template('/login/loginform.html', user=username)
-    else:
-        return render_template('/login/index.html')
-
-
-@app.route('/admin/index.html')
-def admin_home():
-    return render_template('/admin/index.html')
-
 
 @app.route('/admin/client/index.html')
 def client_home():
