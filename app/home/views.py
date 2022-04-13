@@ -1,8 +1,5 @@
-from flask import Blueprint, render_template, request
-# from flask_bs4 import Bootstrap
-
-
-home_bp = Blueprint('home', __name__, template_folder='templates')
+from flask import render_template, request
+from . import home_bp
 
 
 @home_bp.route('/')
