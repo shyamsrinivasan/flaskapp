@@ -21,7 +21,11 @@ def login_home():
         return render_template('/login.html')
 
 
-@home_bp.route('/signup.html')
+@home_bp.route('/signup.html', methods=['GET', 'POST'])
 def signup_home():
-    return render_template('/signup.html')
+    if request.method == 'POST':
+        # process sign-up information using func into db
+        return None
+    else:
+        return render_template('/signup.html')
 
