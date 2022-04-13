@@ -1,6 +1,5 @@
 from flask import Flask
 # from flask_bs4 import Bootstrap
-# from .home import home
 # from .views.admin import admin
 # from .views.taxes import taxes
 import os
