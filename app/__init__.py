@@ -23,9 +23,10 @@ def create_app():
 
     with app.app_context():
         from .home import views
+        # from .admin import views
 
         # registering blueprint with app
-        app.register_blueprint(views.home)
+        app.register_blueprint(views.home_bp)
         # app.register_blueprint(admin)
 
     return app
