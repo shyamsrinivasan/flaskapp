@@ -22,11 +22,11 @@ def create_app():
         pass
 
     with app.app_context():
-        from .home import views
+        from .home import home
         # from .admin import views
 
         # registering blueprint with app
-        app.register_blueprint(views.home_bp)
+        app.register_blueprint(home.home_bp)
         # app.register_blueprint(admin)
 
     return app
