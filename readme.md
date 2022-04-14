@@ -110,22 +110,3 @@ flaskapp/
 
 
 &nbsp;&nbsp;`forms.py`
-
-## Directory (functional) structure for using Flask Blueprints with App Factory functions:
-* flaskapp/
-
-
-	** app/
-	   *** __init__.py
-	   *** config.py
-	   *** static/
-	   *** templates/
-	       **** home/
-	       **** admin/
-	   *** views/
-	       **** __init__.py
-	       **** home.py
-	       **** admin.py
-	   *** models.py
-
-
