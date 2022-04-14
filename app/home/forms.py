@@ -8,10 +8,10 @@ class ContactForm(FlaskForm):
 
     name = StringField('Name', [DataRequired()])
     email = EmailField('Email', [Email(message='Not a valid email address'), DataRequired()])
-    body = TextAreaField('Message', [DataRequired(), Length(min=4, message='Your message is too short')])
+    message = TextAreaField('Message', [DataRequired(), Length(min=4, message='Your message is too short')])
 
     recaptcha = RecaptchaField()
-    submit = SubmitField('Submit')
+    submit = SubmitField('Send Message')
 
 
 class SignupForm(FlaskForm):
