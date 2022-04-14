@@ -1,6 +1,4 @@
 from flask import Flask
-# from flask_bs4 import Bootstrap
-# from .views.admin import admin
 # from .views.taxes import taxes
 import os
 
@@ -9,7 +7,6 @@ def create_app():
     app = Flask(__name__, instance_relative_config=True)
 
     # configure application
-    # app.config.from_mapping(SECRET_KEY='dev')
     app.config.from_object('config.TestConfig')
     # app.config['BOOTSTRAP_SERVE_LOCAL'] = True
 
