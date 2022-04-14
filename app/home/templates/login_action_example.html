@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 
-{% block link %}
+{% block title %}
+User Dashboard
+{% endblock %}
+
+{% block styles %}
 <link href="{{ url_for('static', filename='css/custom.css') }}" type="text/css" rel="stylesheet" />
 {% endblock %}
 
@@ -14,15 +18,14 @@
       <li class="nav-item"><a href="{{ url_for('home.about') }}" class="nav-link text-white px-2">About</a></li>
     </ul>
     <ul class="nav">
-      <li class="nav-item"><a href="{{ url_for('home.login_home') }}" class="nav-link text-white px-2">Login</a></li>
-      <li class="nav-item"><a href="#" type="button" class="btn btn-primary">Sign-up</a></li>
+      <li class="nav-item"><a href="{{ url_for('home.login_home') }}" type="button" class="btn btn-primary">Logout</a></li>
     </ul>
   </div>
 </nav>
 {% endblock %}
 
 {% block content %}
-<div class="container bg-dark text-white">
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column text-center text-white bg-dark">
 <h1>You are logged in as {{ user|capitalize }}</h1>
 <ul>
 	<li>{{ request.blueprint }}</li>
