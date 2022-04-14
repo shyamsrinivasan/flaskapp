@@ -52,13 +52,13 @@
 flaskapp/
 
 
+&nbsp;`config.py`
+
+
 &nbsp;`app/`
 
 
 &nbsp;&nbsp;`__init__.py`
-
-
-&nbsp;`config.py`
 
 
 &nbsp;&nbsp;`admin/`
