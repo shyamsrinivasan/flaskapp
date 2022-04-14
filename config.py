@@ -5,6 +5,9 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 
 class Config:
+    DEBUG = False
+    TESTING = False
+
     @staticmethod
     def init_app(app):
         pass
@@ -12,6 +15,7 @@ class Config:
 
 class DevConfig(Config):
     DEBUG = True
+    SECRET_KEY = os.urandom(32)
 
 
 class TestConfig(Config):
