@@ -41,6 +41,13 @@
 * Install mysql-config using `sudo apt-get install libmysqlclient-dev`
 * `pip install mysqlclient`
 
+## Steps to run a Flask application on the command line:
+* Move to project folder: `cd /project_folder`
+* Activate environment venv on Unix(assuming venv is in project_folder): `source venv/bin/activate` or Windows: `"venv/Scripts/activate"`
+* Set environment variables FLASK_APP and FLASk_ENV: `set FLASK_APP=application_name` and `set FLASK_ENV=development` for flask development server
+* Run command: `flask run`
+
+
 ## Directory (divisional) structure for using Flask Blueprints with App Factory functions:
 flaskapp/
 
@@ -51,58 +58,63 @@ flaskapp/
 &nbsp;&nbsp;`__init__.py`
 
 
-&nbsp;&nbsp;&nbsp;`config.py`
+&nbsp;`config.py`
 
 
-&nbsp;&nbsp;&nbsp;`admin/`
+&nbsp;&nbsp;`admin/`
 
 
-&nbsp;&nbsp;&nbsp;&nbsp;`__init__.py`
+&nbsp;&nbsp;&nbsp;`__init__.py`
 
 
-&nbsp;&nbsp;&nbsp;&nbsp;`views.py`
+&nbsp;&nbsp;&nbsp;`views.py`
 
 
-&nbsp;&nbsp;&nbsp;&nbsp;`static/`
+&nbsp;&nbsp;&nbsp;`static/`
 
 
-&nbsp;&nbsp;&nbsp;&nbsp;`templates/`
+&nbsp;&nbsp;&nbsp;`templates/`
 
 
-&nbsp;&nbsp;&nbsp;`home/`
+&nbsp;&nbsp;`home/`
 
 
-&nbsp;&nbsp;&nbsp;&nbsp;`__init__.py`
+&nbsp;&nbsp;&nbsp;`__init__.py`
 
 
-&nbsp;&nbsp;&nbsp;&nbsp;`views.py`
+&nbsp;&nbsp;&nbsp;`views.py`
 
 
-&nbsp;&nbsp;&nbsp;&nbsp;`static/`
+&nbsp;&nbsp;&nbsp;`static/`
 
 
-&nbsp;&nbsp;&nbsp;&nbsp;`templates/`
+&nbsp;&nbsp;&nbsp;`templates/`
 	    
 
-&nbsp;&nbsp;&nbsp;`control_panel/`
+&nbsp;&nbsp;`control_panel/`
 
 
-&nbsp;&nbsp;&nbsp;&nbsp;`__init__.py`
+&nbsp;&nbsp;&nbsp;`__init__.py`
 
 
-&nbsp;&nbsp;&nbsp;&nbsp;`views.py`
+&nbsp;&nbsp;&nbsp;`views.py`
 
 
-&nbsp;&nbsp;&nbsp;&nbsp;`static/`
+&nbsp;&nbsp;&nbsp;`static/`
 
 
-&nbsp;&nbsp;&nbsp;&nbsp;`templates/`
+&nbsp;&nbsp;&nbsp;`templates/`
 
 
-&nbsp;&nbsp;&nbsp;`models.py`
+&nbsp;&nbsp;`models.py`
+
+
+&nbsp;&nbsp;`forms.py`
 
 ## Directory (functional) structure for using Flask Blueprints with App Factory functions:
 * flaskapp/
+
+
 	** app/
 	   *** __init__.py
 	   *** config.py
