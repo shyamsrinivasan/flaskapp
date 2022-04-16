@@ -10,7 +10,7 @@ class ContactForm(FlaskForm):
     email = EmailField('Email', [Email(message='Not a valid email address'), DataRequired()])
     message = TextAreaField('Message', [DataRequired(), Length(min=4, message='Your message is too short')])
 
-    recaptcha = RecaptchaField()
+    # recaptcha = RecaptchaField()
     submit = SubmitField('Send Message')
 
 
