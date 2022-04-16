@@ -60,12 +60,13 @@ def contact():
 @home_bp.route('/<from_page>/success')
 def success(from_page):
     """success page views/routes for different sections of app"""
-    if from_page == 'contact':
-        return render_template('/success.html')
+    return render_template('/success.html', page=from_page)
+    # if from_page == 'contact':
+    #     return render_template('/success.html')
     # elif from_page == 'signup':
     #     return render_template('/success.html')
-    # return render_template('/success_generic.html')
-    return 'Success'
+    # return redirect(url_for('home.index'))
+    # return render_template('/success.html')
 
 
 @home_bp.route('/signup', methods=['GET', 'POST'])

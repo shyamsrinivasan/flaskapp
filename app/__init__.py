@@ -7,7 +7,8 @@ def create_app():
     app = Flask(__name__, instance_relative_config=True)
 
     # configure application
-    app.config.from_object('config.TestConfig')
+    app.config.from_object('config.DevConfig')
+    # app.config['SECRET_KEY'] =
     # app.config['BOOTSTRAP_SERVE_LOCAL'] = True
 
     # Bootstrap(app)
