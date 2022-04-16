@@ -24,8 +24,59 @@ Sign-up page
 </nav>
 {% endblock %}
 
-{% block header%}
-{% endblock %}
-
 {% block main %}
+<div class="container col-xl-12 col-xxl-12 px-4 py-5">
+  <div class="row g-lg-5 py-5">
+    <div class="col-lg-5 text-center text-lg-start">
+      <!-- <h1 class="display-4 fw-bold lh-1 mb-3">Application Signup</h1> -->
+      <p class="col-lg-10 fs-4">Please enter the details requested for on your right to signup as an user for the application.</p>
+    </div>
+    <div class="col-md-10 mx-auto col-lg-7">
+      <form action="{{ url_for('home.signup_home') }}" method="POST" class="p-4 p-md-5 border rounded-3 bg-light">
+        {{ form.hidden_tag() }}
+        <div class="form-floating mb-3">
+          {{ form.first_name(class="form-control", id="floatingInput") }}
+          {{ form.first_name.label }}
+        </div>
+        <div class="form-floating mb-3">
+          {{ form.last_name(class="form-control", id="floatingInput") }}
+          {{ form.last_name.label }}          
+        </div>
+        <div class="form-floating mb-3">
+          {{ form.dob(class="form-control", id="floatingInput") }}
+          {{ form.dob.label }}          
+        </div>
+        <div class="form-floating mb-3">
+          {{ form.email(class="form-control", id="floatingInput") }}
+          {{ form.email.label }}          
+        </div>
+        <div class="form-floating mb-3">
+          {{ form.phone(class="form-control", id="floatingInput") }}
+          {{ form.phone.label }}          
+        </div>
+        <div class="form-floating mb-3">
+          {{ form.employee_type(class="form-control", id="floatingInput") }}
+          {{ form.employee_type.label }}          
+        </div>
+        <div class="form-floating mb-3">
+          {{ form.username(class="form-control", id="floatingInput") }}
+          {{ form.username.label }}          
+        </div>
+        <div class="form-floating mb-3">
+          {{ form.password(class="form-control floatingPassword", id="floatingInput") }}
+          {{ form.password.label }}          
+        </div>
+        <div class="form-floating mb-3">
+          {{ form.confirm_pass(class="form-control floatingPassword", id="floatingInput") }}
+          {{ form.confirm_pass.label }}          
+        </div>
+
+        {{ form.submit(class="w-100 btn btn-lg btn-primary") }} 
+        
+        <hr class="my-4">
+        <small class="text-muted">By clicking Sign up, you agree to the terms of use.</small>
+      </form>
+    </div>
+  </div>
+</div>
 {% endblock %}

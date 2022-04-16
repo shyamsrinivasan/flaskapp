@@ -1,6 +1,6 @@
 from flask import render_template, request, redirect, url_for
 from . import home_bp
-from .forms import ContactForm
+from .forms import ContactForm, SignupForm
 
 
 @home_bp.route('/')
@@ -31,7 +31,7 @@ def login_home():
 def contact():
     """contact us page"""
     form = ContactForm()
-    print(form.validate_on_submit())
+    # print(form.validate_on_submit())
     if request.method == 'POST' and form.validate_on_submit():
         return redirect(url_for('home.success', from_page='contact'))
         # if form.validate_on_submit():
@@ -71,10 +71,13 @@ def success(from_page):
 
 @home_bp.route('/signup', methods=['GET', 'POST'])
 def signup_home():
-    form = ContactForm()
-    if form.validate_on_submit():
+    form = SignupForm()
+    if request.method == 'POST':
+        return 'Signup Successful!'
+        # return redirect(url_for('home.index.html')
+    # if form.validate_on_submit():
         # process sign-up information using func into db
-        return redirect(url_for('success', from_page='signup'))
+        # return redirect(url_for('success', from_page='signup'))
     # temporary render template to test usage of WTF-Forms
     return render_template('/signup.html', form=form)
 
