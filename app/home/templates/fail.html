@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block title %}
+Contact us
+{% endblock %}
+
+{% block styles %}
+<link href="{{ url_for('static', filename='css/custom.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block navbar %}
+<nav class="py-2 bg-dark text-white border-bottom">
+  <div class="container d-flex flex-wrap">
+    <ul class="nav me-auto">
+      <li class="nav-item"><a href="{{ url_for('home.index') }}" class="nav-link text-white px-2 active" aria-current="page">Home</a></li>
+      <!-- <li class="nav-item"><a href="{{ url_for('admin.index') }}" class="nav-link text-white px-2">Adminstration</a></li> -->
+      <li class="nav-item"><a href="#" class="nav-link text-white px-2">Tax e-Filing</a></li>
+      <li class="nav-item"><a href="#" class="nav-link text-white px-2">FAQs</a></li>
+      <li class="nav-item"><a href="{{ url_for('home.about') }}" class="nav-link text-white px-2">About</a></li>
+    </ul>
+    <ul class="nav">
+      <li class="nav-item"><a href="{{ url_for('home.login_home') }}" class="nav-link text-white px-2">Login</a></li>
+      <li class="nav-item"><a href="{{ url_for('home.signup_home') }}" type="button" class="btn btn-primary">Sign-up</a></li>
+    </ul>
+  </div>
+</nav>
+{% endblock %}
+
+{% block main %}
+<div class="container col-xl-10 col-xxl-8 px-4 py-5">
+    <div class="row align-items-center g-lg-5 py-5">
+      <div class="col-lg-7 text-center text-lg-start">
+        <h1 class="display-4 fw-bold lh-1 mb-3">Form errors</h1>
+        <p class="col-lg-10 fs-4">All form errors are shown on your right          
+        </p>
+      </div>
+      <div class="col-md-10 mx-auto col-lg-5">
+        <!-- {% if form.errors %}
+          <p class="errors">Form has errors<p>
+        {% endif %} -->        
+        {% if form.errors %}
+          <ul class="errors">
+            {% for field_name, field_errors in form.errors|dictsort if field_errors %}
+              {% for error in field_errors %}
+                <li>{{ form[field_name].label }}: {{ error }}</li>
+              {% endfor %}
+            {% endfor %}
+          </ul>
+        {% endif %}
+        <!-- {% if form.name.errors %}
+          <ul class="errors">
+            {% for error in form.name.errors %}
+              <li>{{ error }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+        {% if form.email.errors %}
+          <ul class="errors">
+            {% for error in form.email.errors %}
+              <li>{{ error }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}  
+        {% if form.message.errors %}
+          <ul class="errors">
+            {% for error in form.message.errors %}
+              <li>{{ error }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}  -->
+      </div>
+{% endblock %}

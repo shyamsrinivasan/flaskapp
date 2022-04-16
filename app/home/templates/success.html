@@ -1,19 +1,19 @@
 {% extends "base.html" %}
 
 {% block title %}
-Homepage
+Contact successful
 {% endblock %}
 
-{% block styles %}
+{% block style %}
 <link href="{{ url_for('static', filename='css/custom.css') }}" type="text/css" rel="stylesheet" />
-<link href="{{ url_for('static', filename='css/cover.css') }}" type="text/css" rel="stylesheet" />
 {% endblock %}
 
 {% block navbar %}
 <nav class="py-2 bg-dark text-white border-bottom">
   <div class="container d-flex flex-wrap">
     <ul class="nav me-auto">
-      <li class="nav-item"><a href="{{ url_for('home.index') }}" class="nav-link text-white px-2 active" aria-current="page">Home</a></li>  
+      <li class="nav-item"><a href="{{ url_for('home.index') }}" class="nav-link text-white px-2 active" aria-current="page">Home</a></li>
+      <!-- <li class="nav-item"><a href="{{ url_for('admin.index') }}" class="nav-link text-white px-2">Adminstration</a></li> -->
       <li class="nav-item"><a href="#" class="nav-link text-white px-2">Tax e-Filing</a></li>
       <li class="nav-item"><a href="#" class="nav-link text-white px-2">FAQs</a></li>
       <li class="nav-item"><a href="{{ url_for('home.about') }}" class="nav-link text-white px-2">About</a></li>
@@ -28,22 +28,8 @@ Homepage
 
 {% block main %}
 <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column text-center text-white bg-dark">
-  <main class="px-3">
-    <h1>About Demeter farms</h1>
-    <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
-    <p class="lead">
-      <a href="{{ url_for('home.contact') }}" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Contact Us</a>
-    </p>
+  <main class="px-3">    
+    <p class="lead">Your message was sent successfully. We will get back to you soon</p>    
   </main>
 </div>
 {% endblock %}
-
-{% block footer %}
-<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column text-center text-white bg-dark">
-  <footer class="mt-auto text-white-50">
-  <p>Adopted by <a href="https://github.com/shyamsrinivasan" class="text-white">Shyam Srinivasan</a> using <a href="https://getbootstrap.com/" class="text-white">Bootstrap</a></p>
-</footer>  
-</div>
-
-{% endblock %}
-
