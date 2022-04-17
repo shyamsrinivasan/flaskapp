@@ -1,5 +1,4 @@
 from flask import Flask
-# from .views.taxes import taxes
 import os
 
 
@@ -22,10 +21,12 @@ def create_app():
     with app.app_context():
         from .home import home_bp
         from .admin import admin_bp
+        from .taxes import taxes_bp
 
         # registering blueprint with app
         app.register_blueprint(home_bp)
         app.register_blueprint(admin_bp)
+        app.register_blueprint(taxes_bp)
 
     return app
 

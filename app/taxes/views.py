@@ -1,10 +1,8 @@
 from flask import Blueprint, render_template
+from . import taxes_bp
 
 
-taxes = Blueprint('taxes', __name__)
-
-
-@taxes.route('/taxes')
-@taxes.route('/taxes/index.html')
+@taxes_bp.route('/taxes')
+@taxes_bp.route('/taxes/index.html')
 def taxes_home():
     return render_template('/taxes/index.html')
