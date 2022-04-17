@@ -10,6 +10,12 @@ def index():
     return render_template('/index.html')
 
 
+@home_bp.route('/faq')
+def faq():
+    """FAQs page"""
+    return render_template('/faq.html')
+
+
 @home_bp.route('/about')
 def about():
     """about page"""

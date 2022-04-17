@@ -5,4 +5,4 @@ from . import taxes_bp
 @taxes_bp.route('/taxes')
 @taxes_bp.route('/taxes/index.html')
 def taxes_home():
-    return render_template('/taxes/index.html')
+    return render_template('/index.html')

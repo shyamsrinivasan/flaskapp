@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}
-Test page
+FAQs
 {% endblock %}
 
 {% block styles %}
@@ -15,7 +15,7 @@ Test page
     <ul class="nav me-auto">
       <li class="nav-item"><a href="{{ url_for('home.index') }}" class="nav-link text-white px-2" aria-current="page">Home</a></li>  
       <li class="nav-item"><a href="{{ url_for('taxes.taxes_home') }}" class="nav-link text-white px-2">Taxes</a></li>
-      <li class="nav-item"><a href="{{ url_for('home.faq') }}" class="nav-link text-white px-2">FAQs</a></li>
+      <li class="nav-item"><a href="#" class="nav-link text-white px-2">FAQs</a></li>
       <li class="nav-item"><a href="{{ url_for('home.about') }}" class="nav-link text-white px-2 active">About</a></li>
     </ul>
     <ul class="nav">
@@ -27,9 +27,9 @@ Test page
 {% endblock %}
 
 {% block main %}
-<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column text-center text-white bg-dark">
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column text-left text-white bg-dark">
   <main class="px-3">
-    <h1>About Demeter farms</h1>
+    <h1>Frequently Asked Questions (FAQs)</h1>
     <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
     <p class="lead">
       <a href="{{ url_for('home.contact') }}" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Contact Us</a>
@@ -41,8 +41,7 @@ Test page
 {% block footer %}
 <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column text-center text-white bg-dark">
   <footer class="mt-auto text-white-50">
-  <p>Adopted by <a href="https://github.com/shyamsrinivasan" class="text-white">Shyam Srinivasan</a> using <a href="https://getbootstrap.com/" class="text-white">Bootstrap</a></p>
+  <p>Adopted by <a href="https://github.com/shyamsrinivasan" class="text-white" target="_blank">Shyam Srinivasan</a> using <a href="https://getbootstrap.com/" class="text-white" target="_blank">Bootstrap</a></p>
 </footer>  
 </div>
 {% endblock %}
-
