@@ -1,3 +1,8 @@
+## Python version and virtual environment setup:
+* Uses [Python 3.9](https://www.python.org/downloads/release/python-3913/)
+* Use virtual environment installed with pip `py -m venv env` in application directory to create virtual environment named `env`
+* Install project requirements by running `py -m pip install -r requirements.txt` in application directory after activating virtual environment by running `.\env\Scripts\activate` from application directory
+
 ## Notes:
 * Raw HTML files for direct running on web server are stored seperately in the *//html* folder
 * HTML templates for use with *jinja2* in FLASK are stored in *//app//templates* folder
