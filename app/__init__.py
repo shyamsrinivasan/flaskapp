@@ -1,5 +1,10 @@
 from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
+
 import os
+
+
+db = SQLAlchemy()
 
 
 def create_app():
@@ -18,7 +23,10 @@ def create_app():
     except OSError:
         pass
 
+    db.init_app(app)
     with app.app_context():
+        db.create_all()
+
         from .home import home_bp
         from .admin import admin_bp
         from .taxes import taxes_bp

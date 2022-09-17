@@ -79,6 +79,7 @@ def success(from_page):
 def signup_home():
     form = SignupForm()
     if request.method == 'POST':
+        # add info to db here
         return 'Signup Successful!'
         # return redirect(url_for('home.index.html')
     # if form.validate_on_submit():
