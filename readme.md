@@ -49,7 +49,9 @@
 ## Steps to run a Flask application on the command line:
 * Move to project folder: `cd /project_folder`
 * Activate environment venv on Unix(assuming venv is in project_folder): `source venv/bin/activate` or Windows: `"venv/Scripts/activate"`
-* Set environment variables FLASK_APP and FLASk_ENV: `set FLASK_APP=application_name` and `set FLASK_ENV=development` for flask development server
+* Set environment variables FLASK_APP and FLASK_ENV: `set FLASK_APP=application_name` and `set FLASK_ENV=development` for flask development server
+* Set DATABASE_URL for using Flask-SQLAlchemy with `set DATABASE_URL="mysql+mysqldb://root:root@localhost/sqlalchemy"`
+* Note: `DATABASE_URL` follows the same syntax as engine call syntax in native SQLAlchemy 
 * Run command: `flask run`
 
 
