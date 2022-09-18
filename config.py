@@ -5,7 +5,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 
 class Config:
-    DEBUG = False
+    DEBUG = True
     TESTING = False
 
     @staticmethod
