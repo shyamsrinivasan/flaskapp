@@ -23,18 +23,18 @@ def create_app():
     except OSError:
         pass
 
+    from .home import home_bp
+    from .admin import admin_bp
+    from .taxes import taxes_bp
+
+    # registering blueprint with app
+    app.register_blueprint(home_bp)
+    app.register_blueprint(admin_bp)
+    app.register_blueprint(taxes_bp)
+
     db.init_app(app)
     with app.app_context():
         db.create_all()
-
-        from .home import home_bp
-        from .admin import admin_bp
-        from .taxes import taxes_bp
-
-        # registering blueprint with app
-        app.register_blueprint(home_bp)
-        app.register_blueprint(admin_bp)
-        app.register_blueprint(taxes_bp)
 
     return app
 

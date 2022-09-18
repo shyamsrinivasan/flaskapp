@@ -1,6 +1,8 @@
 from flask import render_template, request, redirect, url_for
 from . import home_bp
 from .forms import ContactForm, SignupForm
+from .models import User
+from app import db
 
 
 @home_bp.route('/')
@@ -28,6 +30,9 @@ def login_home():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
+        u = User(name=username)
+        db.session.add(u)
+        db.session.commit()
         return render_template('/login_action_example.html', user=username)
     else:
         return render_template('/login.html')
