@@ -1,4 +1,4 @@
-from flask import render_template, request, redirect, url_for, flash
+from flask import render_template, request, redirect, url_for
 from . import home_bp
 from .forms import ContactForm, SignupForm
 from .models import User
@@ -84,14 +84,13 @@ def success(from_page):
 def signup_home():
     form = SignupForm()
     # if request.method == 'POST':
-        # add info to db here
         # return 'Signup Successful!'
-        # return redirect(url_for('home.index.html')
+    # print(form._csrf)
     if form.validate_on_submit():
-    #     # process sign-up information using func into db
-    #     # return redirect(url_for('success', from_page='signup'))
+        # process sign-up information using func into db
+        # add info to db here
+        return redirect(url_for('home.success', from_page='signup'))
     #     flash('Addition of new user {} under progress'.format(form.username))
-        return redirect('/index')   #   'Signup Successful!'
-    # temporary render template to test usage of WTF-Forms
     return render_template('/signup.html', form=form)
+
 
