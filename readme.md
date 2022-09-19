@@ -57,6 +57,15 @@
 ### For Flask >= 2.2.x:
 * `flask --app app_name --debug run` can be used to indirectly set `FLASK_APP`, turn on debug mode and run the flask application server
 
+## Database migration instructions:
+1. If project folder does not have a migrations folder, then initiate use of Flask-Migrate using `flask db init` in the CLI (*Flask-Migrate needs to installed with pip*)
+2. Initiate migration with `flask db migrate -m "migration message"`
+3. Finalize changes to auto-generated migration script and update database to conform to new application model by running `flask db upgrade`
+4. Commit all new and modified files to version control
+5. Repeat steps 2 through 4 every time there are changes in database model files
+6. To use and synchronize database in another system, pull migrations folder from version control and run `flask db upgrade`
+
+
 
 ## Directory (divisional) structure for using Flask Blueprints with App Factory functions:
 flaskapp/
