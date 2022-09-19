@@ -1,10 +1,12 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask_wtf.csrf import CSRFProtect
 
 import os
 
 
 db = SQLAlchemy()
+csrf = CSRFProtect()
 
 
 def create_app():
@@ -15,6 +17,7 @@ def create_app():
     # app.config['SECRET_KEY'] =
     # app.config['BOOTSTRAP_SERVE_LOCAL'] = True
 
+    csrf.init_app(app)
     # Bootstrap(app)
 
     # ensure the instance folder exists
