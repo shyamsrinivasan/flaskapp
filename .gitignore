@@ -64,7 +64,6 @@ db.sqlite3-journal
 # Flask stuff:
 instance/
 .webassets-cache
-*.iml
 
 # Scrapy stuff:
 .scrapy
@@ -128,3 +127,4 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+.idea/flaskapp.iml
