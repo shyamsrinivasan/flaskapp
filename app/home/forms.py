@@ -29,17 +29,19 @@ class SignupForm(FlaskForm):
     """Form to signup as user in application"""
 
     # basic details
-    # first_name = StringField('First Name', [DataRequired(message='Please provide your first name')])
-    # last_name = StringField('Last Name', [DataRequired(message='Please provide your last name')])
+    first_name = StringField('First Name', [DataRequired(message='Please provide your first name')])
+    last_name = StringField('Last Name', [DataRequired(message='Please provide your last name')])
     # dob = DateField('Date of Birth', [DataRequired()])
-    # email = EmailField('Email', [Email(message='Not a valid email address'), Optional()])
-    # phone = StringField('Phone', [DataRequired(), phone_num(minimum=10, maximum=14)])
+    email = EmailField('Email', [Email(message='Not a valid email address'), Optional()])
+    phone = StringField('Phone', [Optional(), phone_num(minimum=10, maximum=14)])
+
     # login details
     username = StringField('Username', [DataRequired(),
                                         Length(min=6, message='Your username should be minimum 6 characters')])
     password = PasswordField('Password', [DataRequired(message='Please enter a password'),
                                           Length(min=8, message='Password should be at least 8 characters')])
     confirm_pass = PasswordField('ConfirmPassword', [EqualTo('password', message='Passwords must match')])
+
     # specific details
     # employee_type = SelectField('Employee Type', [DataRequired()], choices=[('Administrator', 'admin'),
     #                                                                         ('User', 'user'),
