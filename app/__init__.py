@@ -1,11 +1,13 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
 from flask_wtf.csrf import CSRFProtect
 
 import os
 
 
 db = SQLAlchemy()
+migrate = Migrate()
 csrf = CSRFProtect()
 
 
@@ -36,6 +38,7 @@ def create_app():
     app.register_blueprint(taxes_bp)
 
     db.init_app(app)
+    migrate.init_app(app, db)
     with app.app_context():
         db.create_all()
 
