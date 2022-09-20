@@ -1,6 +1,7 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from app import db
+from app import flask_bcrypt
 
 
 class User(db.Model):
@@ -11,7 +12,8 @@ class User(db.Model):
     lastname = db.Column(db.String(20), nullable=False)
     email = db.Column(db.String(30))
     phone = db.Column(db.String(10))
-    username = db.Column(db.String(6), nullable=False)
+    username = db.Column(db.String(20), nullable=False)
+    password_hash = db.Column(db.String(60))
 
     # def __init__(self, ids, name):
     #     self.id = ids

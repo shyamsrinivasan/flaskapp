@@ -2,6 +2,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_wtf.csrf import CSRFProtect
+from flask_bcrypt import Bcrypt
 
 import os
 
@@ -9,6 +10,7 @@ import os
 db = SQLAlchemy()
 migrate = Migrate()
 csrf = CSRFProtect()
+flask_bcrypt = Bcrypt()
 
 
 def create_app():

@@ -3,6 +3,7 @@ from . import home_bp
 from .forms import ContactForm, SignupForm
 from .models import User
 from app import db
+from app import flask_bcrypt
 
 
 @home_bp.route('/')
@@ -85,12 +86,25 @@ def signup_home():
     form = SignupForm()
     # if request.method == 'POST':
         # return 'Signup Successful!'
-    # print(form._csrf)
+    # print(form['csrf_token'])
     if form.validate_on_submit():
-        # process sign-up information using func into db
-        # add info to db here
+        # process sign-up information using func into db add info to db here
+        add_user(request.form)
         return redirect(url_for('home.success', from_page='signup'))
     #     flash('Addition of new user {} under progress'.format(form.username))
     return render_template('/signup.html', form=form)
+
+
+def add_user(form_obj):
+
+    # hash password using bcrypt
+    hashed = flask_bcrypt.generate_password_hash(password=form_obj['password'], rounds=12)
+    # generate user object to add to db with hashed password
+    new_user_obj = User(firstname=form_obj['first_name'], lastname=form_obj['last_name'],
+                        email=form_obj['email'], phone=form_obj['phone'],
+                        username=form_obj['username'], password_hash=hashed)
+    db.session.add(new_user_obj)
+    db.session.commit()
+    return None
 
 

@@ -7,6 +7,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 class Config:
     DEBUG = True
     TESTING = False
+    CSRF_ENABLED = True
 
     @staticmethod
     def init_app(app):
