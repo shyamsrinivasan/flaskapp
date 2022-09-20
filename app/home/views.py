@@ -1,6 +1,6 @@
 from flask import render_template, request, redirect, url_for
 from . import home_bp
-from .forms import ContactForm, SignupForm
+from .forms import ContactForm, SignupForm, LoginForm
 from .models import User
 from app import db
 from app import flask_bcrypt
@@ -28,15 +28,24 @@ def about():
 @home_bp.route('/login', methods=['GET', 'POST'])
 def login_home():
     """login page"""
-    if request.method == 'POST':
+    form = LoginForm()
+    # if request.method == 'POST':
+    if form.validate_on_submit():
         username = request.form['username']
         password = request.form['password']
-        u = User(name=username)
-        db.session.add(u)
-        db.session.commit()
-        return render_template('/login_action_example.html', user=username)
+        # query db and get user and corresponding pass word hash
+        user_obj = db.session.query(User).filter(User.username == username).first()
+        if user_obj is not None and \
+                flask_bcrypt.check_password_hash(user_obj.password_hash, password):
+            return 'Welcome {} {}'.format(user_obj.firstname, user_obj.lastname)
+        else:
+            return 'User not found', 404
+        # u = User(name=username)
+        # db.session.add(u)
+        # db.session.commit()
+        # return render_template('/login_action_example.html', user=username)
     else:
-        return render_template('/login.html')
+        return render_template('/login.html', form=form)
 
 
 @home_bp.route('/contact', methods=['GET', 'POST'])
