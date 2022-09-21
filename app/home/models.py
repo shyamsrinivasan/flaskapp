@@ -15,9 +15,7 @@ class User(db.Model):
     username = db.Column(db.String(20), nullable=False)
     password_hash = db.Column(db.String(60))
 
-    # def __init__(self, ids, name):
-    #     self.id = ids
-    #     self.name = name
-
     def __repr__(self):
-        return f"User(id={self.id!r}, name={self.name!r})"
+        return f"User(id={self.id!r}, name={self.name!r}, firstname={self.firstname!r}," \
+               f"lastname={self.lastname!r}, email={self.email!r}, phone={self.phone!r}," \
+               f"username={self.username!r})"
