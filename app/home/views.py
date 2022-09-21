@@ -43,7 +43,7 @@ def login_home():
                                    user=username)
             # redirect(url_for('home.success', from_page='login', firstname=firstname,
             #                  lastname=lastname, username=username))
-            return
+            # return
         else:
             return 'Worng username or password', 404
     else:
@@ -109,12 +109,12 @@ def signup_home():
 def _add_user(form_obj):
     """take user details in form_obj to create User object and
     add as row to user table"""
-    # hash password using bcrypt
-    hashed = flask_bcrypt.generate_password_hash(password=form_obj['password'], rounds=12)
-    # generate user object to add to db with hashed password
+    # generate user object
     new_user_obj = User(firstname=form_obj['first_name'], lastname=form_obj['last_name'],
                         email=form_obj['email'], phone=form_obj['phone'],
-                        username=form_obj['username'], password_hash=hashed)
+                        username=form_obj['username'])
+    # add hashed password to db
+    new_user_obj.set_password(form_obj['password'])
     db.session.add(new_user_obj)
     db.session.commit()
     return None
@@ -124,7 +124,7 @@ def _check_user_password(username, password):
     """check if password hash in db matches given username and password"""
     user_obj = db.session.query(User).filter(User.username == username).first()
     if user_obj is not None:
-        if flask_bcrypt.check_password_hash(user_obj.password_hash, password):
+        if flask_bcrypt.check_password_hash(user_obj.password_hash, password.encode('utf-8')):
             return True, user_obj.firstname, user_obj.lastname
         else:
             return False, None, None

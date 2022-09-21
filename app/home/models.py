@@ -19,3 +19,10 @@ class User(db.Model):
         return f"User(id={self.id!r}, name={self.name!r}, firstname={self.firstname!r}," \
                f"lastname={self.lastname!r}, email={self.email!r}, phone={self.phone!r}," \
                f"username={self.username!r})"
+
+    def set_password(self, password):
+        """hash and set password field to hashed value"""
+        # hash password using bcrypt
+        hashed = flask_bcrypt.generate_password_hash(password=password.encode('utf-8'),
+                                                     rounds=12)
+        self.password_hash = hashed
