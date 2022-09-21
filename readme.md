@@ -69,14 +69,11 @@
 
 ## Directory (divisional) structure for using Flask Blueprints with App Factory functions:
 flaskapp/
-
-
 |
---- config.py
+---`config.py`
+---`app`
 |
----
-
-
+------`__init__.py`
 
 &nbsp;`config.py`
 
