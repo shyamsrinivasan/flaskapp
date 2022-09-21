@@ -26,12 +26,12 @@ User Dashboard
 
 {% block content %}
 <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column text-center text-white bg-dark">
-<h1>You are logged in as {{ user|capitalize }}</h1>
-<ul>
+<h1>Welcome, {{ firstname|capitalize }} {{ lastname| capitalize }}. You are logged in as {{ user }}</h1>
+<!--<ul>
 	<li>{{ request.blueprint }}</li>
 	<li>{{ self._TemplateReference__context.name }}</li>
 	<li>{{ request.endpoint }}</li>
 	<li>{{ request.path }}</li>
-</ul>
+</ul>-->
 </div>
 {% endblock %}

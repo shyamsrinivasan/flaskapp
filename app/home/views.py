@@ -33,17 +33,19 @@ def login_home():
     if form.validate_on_submit():
         username = request.form['username']
         password = request.form['password']
-        # query db and get user and corresponding pass word hash
-        user_obj = db.session.query(User).filter(User.username == username).first()
-        if user_obj is not None and \
-                flask_bcrypt.check_password_hash(user_obj.password_hash, password):
-            return 'Welcome {} {}'.format(user_obj.firstname, user_obj.lastname)
+        check_user, firstname, lastname = _check_user_password(username=username,
+                                                               password=password)
+        if check_user:
+            # return 'Welcome {} {}'.format(user_obj.firstname, user_obj.lastname)
+            return render_template('/login_action_example.html',
+                                   firstname=firstname,
+                                   lastname=lastname,
+                                   user=username)
+            # redirect(url_for('home.success', from_page='login', firstname=firstname,
+            #                  lastname=lastname, username=username))
+            return
         else:
-            return 'User not found', 404
-        # u = User(name=username)
-        # db.session.add(u)
-        # db.session.commit()
-        # return render_template('/login_action_example.html', user=username)
+            return 'Worng username or password', 404
     else:
         return render_template('/login.html', form=form)
 
@@ -98,14 +100,15 @@ def signup_home():
     # print(form['csrf_token'])
     if form.validate_on_submit():
         # process sign-up information using func into db add info to db here
-        add_user(request.form)
+        _add_user(request.form)
         return redirect(url_for('home.success', from_page='signup'))
     #     flash('Addition of new user {} under progress'.format(form.username))
     return render_template('/signup.html', form=form)
 
 
-def add_user(form_obj):
-
+def _add_user(form_obj):
+    """take user details in form_obj to create User object and
+    add as row to user table"""
     # hash password using bcrypt
     hashed = flask_bcrypt.generate_password_hash(password=form_obj['password'], rounds=12)
     # generate user object to add to db with hashed password
@@ -116,4 +119,15 @@ def add_user(form_obj):
     db.session.commit()
     return None
 
+
+def _check_user_password(username, password):
+    """check if password hash in db matches given username and password"""
+    user_obj = db.session.query(User).filter(User.username == username).first()
+    if user_obj is not None:
+        if flask_bcrypt.check_password_hash(user_obj.password_hash, password):
+            return True, user_obj.firstname, user_obj.lastname
+        else:
+            return False, None, None
+    else:
+        return False, None, None
 
