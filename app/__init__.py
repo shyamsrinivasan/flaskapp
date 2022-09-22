@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_wtf.csrf import CSRFProtect
 from flask_bcrypt import Bcrypt
+from flask_login import LoginManager
 
 import os
 
@@ -11,6 +12,7 @@ db = SQLAlchemy()
 migrate = Migrate()
 csrf = CSRFProtect()
 flask_bcrypt = Bcrypt()
+login_manager = LoginManager()
 
 
 def create_app():
@@ -22,6 +24,7 @@ def create_app():
     # app.config['BOOTSTRAP_SERVE_LOCAL'] = True
 
     csrf.init_app(app)
+    login_manager.init_app(app)
     # Bootstrap(app)
 
     # ensure the instance folder exists

@@ -2,8 +2,8 @@ from flask import render_template, request, redirect, url_for
 from . import home_bp
 from .forms import ContactForm, SignupForm, LoginForm
 from .models import User
-from app import db
-from app import flask_bcrypt
+from app import db, flask_bcrypt
+from flask_login import current_user, login_user, logout_user
 
 
 @home_bp.route('/')
@@ -28,26 +28,38 @@ def about():
 @home_bp.route('/login', methods=['GET', 'POST'])
 def login_home():
     """login page"""
+    # deal with a currently signed in user pressing login
+    if current_user.is_authenticated:
+        return redirect(url_for('home.index'))
+
     form = LoginForm()
     # if request.method == 'POST':
     if form.validate_on_submit():
         username = request.form['username']
         password = request.form['password']
-        check_user, firstname, lastname = _check_user_password(username=username,
-                                                               password=password)
+        check_user, user_obj = _check_user_password(username=username,
+                                                    password=password)
         if check_user:
             # return 'Welcome {} {}'.format(user_obj.firstname, user_obj.lastname)
+            login_user(user=user_obj)
             return render_template('/login_action_example.html',
-                                   firstname=firstname,
-                                   lastname=lastname,
+                                   firstname=user_obj.firstname,
+                                   lastname=user_obj.lastname,
                                    user=username)
             # redirect(url_for('home.success', from_page='login', firstname=firstname,
             #                  lastname=lastname, username=username))
             # return
         else:
-            return 'Worng username or password', 404
+            return 'Wrong username or password', 404
     else:
         return render_template('/login.html', form=form)
+
+
+@home_bp.route('/logout')
+def logout_home():
+    """logout user"""
+    logout_user()
+    return redirect(url_for('home.index'))
 
 
 @home_bp.route('/contact', methods=['GET', 'POST'])
@@ -125,9 +137,9 @@ def _check_user_password(username, password):
     user_obj = db.session.query(User).filter(User.username == username).first()
     if user_obj is not None:
         if flask_bcrypt.check_password_hash(user_obj.password_hash, password.encode('utf-8')):
-            return True, user_obj.firstname, user_obj.lastname
+            return True, user_obj
         else:
-            return False, None, None
+            return False, None
     else:
-        return False, None, None
+        return False, None
 

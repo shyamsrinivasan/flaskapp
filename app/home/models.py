@@ -1,10 +1,9 @@
-from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
-from app import db
-from app import flask_bcrypt
+from flask_login import UserMixin
+from app import db, flask_bcrypt
+from app import login_manager
 
 
-class User(db.Model):
+class User(UserMixin, db.Model):
     __tablename__ = 'test_users'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -26,3 +25,8 @@ class User(db.Model):
         hashed = flask_bcrypt.generate_password_hash(password=password.encode('utf-8'),
                                                      rounds=12)
         self.password_hash = hashed
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
