@@ -3,7 +3,8 @@ from . import home_bp
 from .forms import ContactForm, SignupForm, LoginForm
 from .models import User
 from app import db, flask_bcrypt
-from flask_login import current_user, login_user, logout_user
+from flask_login import current_user, login_user, logout_user, login_required
+from werkzeug.urls import url_parse
 
 
 @home_bp.route('/')
@@ -42,13 +43,17 @@ def login_home():
         if check_user:
             # return 'Welcome {} {}'.format(user_obj.firstname, user_obj.lastname)
             login_user(user=user_obj)
-            return render_template('/login_action_example.html',
-                                   firstname=user_obj.firstname,
-                                   lastname=user_obj.lastname,
-                                   user=username)
-            # redirect(url_for('home.success', from_page='login', firstname=firstname,
-            #                  lastname=lastname, username=username))
-            # return
+            next_page = request.args.get('next')
+            if not next_page or url_parse(next_page).netloc != '':
+                next_page = url_for('home.index')
+            return redirect(next_page)
+            # return render_template('/login_action_example.html',
+            #                        firstname=user_obj.firstname,
+            #                        lastname=user_obj.lastname,
+            #                        user=username)
+            # # redirect(url_for('home.success', from_page='login', firstname=firstname,
+            # #                  lastname=lastname, username=username))
+            # # return
         else:
             return 'Wrong username or password', 404
     else:
@@ -63,6 +68,7 @@ def logout_home():
 
 
 @home_bp.route('/contact', methods=['GET', 'POST'])
+@login_required
 def contact():
     """contact us page"""
     form = ContactForm()

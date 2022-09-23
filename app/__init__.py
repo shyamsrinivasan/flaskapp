@@ -25,6 +25,7 @@ def create_app():
 
     csrf.init_app(app)
     login_manager.init_app(app)
+    login_manager.login_view = 'home.login_home'
     # Bootstrap(app)
 
     # ensure the instance folder exists
