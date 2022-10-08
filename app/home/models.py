@@ -9,10 +9,14 @@ class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     firstname = db.Column(db.String(20), nullable=False)
     lastname = db.Column(db.String(20), nullable=False)
+    fullname = db.Column(db.String(40), nullable=False, index=True)
     email = db.Column(db.String(30))
-    phone = db.Column(db.String(10))
-    username = db.Column(db.String(20), nullable=False)
+    phone = db.Column(db.String(14))
+    username = db.Column(db.String(20), nullable=False, index=True)
     password_hash = db.Column(db.String(60))
+    added_on = db.Column(db.DateTime(timezone=True), nullable=False,
+                         server_default=db.func.now())
+    added_by = db.Column(db.String(20))
 
     def __repr__(self):
         return f"User(id={self.id!r}, name={self.name!r}, firstname={self.firstname!r}," \
@@ -26,6 +30,14 @@ class User(UserMixin, db.Model):
                                                      rounds=12)
         self.password_hash = hashed
 
+    def set_full_name(self):
+        """set value of fullname column using first and last name"""
+        self.fullname = self.firstname + ' ' + self.lastname
+
+    def set_added_user(self, change_type, username):
+        """set added_user and updated_user"""
+        self.added_by = username
+
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -36,13 +48,15 @@ class Customer(UserMixin, db.Model):
     __tablename__ = 'test_customers'
 
     id = db.Column(db.Integer, primary_key=True)
-    firstname = db.Column(db.String(20), nullable=False)
-    lastname = db.Column(db.String(20), nullable=False)
+    firstname = db.Column(db.String(20), nullable=False, index=True)
+    lastname = db.Column(db.String(20), nullable=False, index=True)
     fullname = db.Column(db.String(40), index=True)
     email = db.Column(db.String(30), index=True)
-    phone = db.Column(db.String(10))
-    type = db.Column(db.Enum('personal', 'commercial', name='customer_type'), nullable=False)
-    date_added = db.Column(db.DateTime(timezone=True), nullable=False, server_default=db.func.now())
+    phone = db.Column(db.String(14))
+    type = db.Column(db.Enum('personal', 'commercial', name='customer_type'),
+                     nullable=False, index=True)
+    date_added = db.Column(db.DateTime(timezone=True), nullable=False,
+                           server_default=db.func.now())
     date_updated = db.Column(db.DateTime(timezone=True), onupdate=db.func.now())
     added_user = db.Column(db.String(20))
     updated_user = db.Column(db.String(20))
