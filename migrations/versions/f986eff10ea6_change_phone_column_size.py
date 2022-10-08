@@ -26,6 +26,8 @@ def upgrade():
     op.add_column('test_users', sa.Column('added_by', sa.String(length=20), nullable=True))
     op.create_index(op.f('ix_test_users_fullname'), 'test_users', ['fullname'], unique=False)
     op.create_index(op.f('ix_test_users_username'), 'test_users', ['username'], unique=False)
+    op.drop_column('test_customers', 'phone')
+    op.add_column('test_customers', sa.Column('phone', sa.String(length=14)))
     # ### end Alembic commands ###
 
 
