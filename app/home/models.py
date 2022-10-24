@@ -61,8 +61,8 @@ class Customer(UserMixin, db.Model):
     added_user = db.Column(db.String(20))
     updated_user = db.Column(db.String(20))
 
-    # address_info = db.relationship('Address', back_populates='customer_info',
-    #                                cascade="all, delete", uselist=False)
+    address_info = db.relationship('Address', back_populates='customer_info',
+                                   cascade="all, delete", uselist=False)
     # tax_info = db.relationship('TaxInfo', back_populates='customer_info',
     #                            cascade="all, delete", uselist=False)
 
@@ -90,8 +90,8 @@ class Address(db.Model):
     __tablename__ = 'test_address'
 
     id = db.Column(db.Integer, primary_key=True)
-    # customer_id = db.Column(db.Integer, db.ForeignKey('test_customers.id', onupdate='CASCADE',
-    #                                                   ondelete='CASCADE'), nullable=False)
+    customer_id = db.Column(db.Integer, db.ForeignKey('test_customers.id', onupdate='CASCADE',
+                                                      ondelete='CASCADE'), nullable=False)
     customer_name = db.Column(db.String(30), index=True)
 
     # add address columns from taxdata db table
@@ -110,8 +110,8 @@ class Address(db.Model):
     updated_user = db.Column(db.String(20))
     last_update = db.Column(db.DateTime(timezone=True), onupdate=db.func.now())
 
-    # customer_info = db.relationship(Customer, back_populates='address_info',
-    #                                 cascade='all, delete')
+    customer_info = db.relationship('Customer', back_populates='address_info',
+                                    cascade='all, delete')
 
     def __repr__(self):
         return f"Address(id={self.id!r}, customer_id={self.customer_id!r}, " \
@@ -124,8 +124,8 @@ class TaxInfo(db.Model):
     __tablename__ = 'test_taxinfo'
 
     id = db.Column(db.Integer, primary_key=True)
-    # customer_id = db.Column(db.Integer, db.ForeignKey(Customer.id, onupdate='CASCADE',
-    #                                                   ondelete='CASCADE'), nullable=False)
+    customer_id = db.Column(db.Integer, db.ForeignKey('test_customers.id', onupdate='CASCADE',
+                                                      ondelete='CASCADE'), nullable=False)
     customer_name = db.Column(db.String(30), index=True)
 
     # customer_info = db.relationship(Customer, back_populates='tax_info',
