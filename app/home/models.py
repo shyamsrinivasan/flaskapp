@@ -135,8 +135,7 @@ class Identity(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     customer_id = db.Column(db.Integer, db.ForeignKey('test_customers.id', onupdate='CASCADE',
                                                       ondelete='CASCADE'), nullable=False)
-    customer_name = db.Column(db.String(40), db.ForeignKey('test_customers.fullname', onupdate='CASCADE',
-                                                           ondelete='CASCADE'), nullable=False)
+    customer_name = db.Column(db.String(40), nullable=False)
 
     dob = db.Column(db.Date, nullable=False)
     pan = db.Column(db.String(10), nullable=False, index=True)
