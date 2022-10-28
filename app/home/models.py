@@ -63,8 +63,8 @@ class Customer(UserMixin, db.Model):
 
     address_info = db.relationship('Address', back_populates='customer_info',
                                    cascade="all, delete", uselist=False)
-    # tax_info = db.relationship('TaxInfo', back_populates='customer_info',
-    #                            cascade="all, delete", uselist=False)
+    identity_info = db.relationship('Identity', back_populates='identity_customer_info',
+                                    cascade="all, delete", uselist=False)
 
     def set_full_name(self):
         """set value of fullname column using first and last name"""
@@ -92,11 +92,11 @@ class Address(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     customer_id = db.Column(db.Integer, db.ForeignKey('test_customers.id', onupdate='CASCADE',
                                                       ondelete='CASCADE'), nullable=False)
-    customer_name = db.Column(db.String(30), index=True)
+    customer_name = db.Column(db.String(40), index=True)
 
     # add address columns from taxdata db table
     type = db.Column(db.Enum('house', 'apartment', 'business - single',
-                             'business - complex', name='address_type'))
+                             'business - complex', name='address_type'), default='house')
     street_num = db.Column(db.String(8))
     street_name = db.Column(db.String(30))
     house_num = db.Column(db.String(8))
@@ -128,5 +128,19 @@ class TaxInfo(db.Model):
                                                       ondelete='CASCADE'), nullable=False)
     customer_name = db.Column(db.String(30), index=True)
 
-    # customer_info = db.relationship(Customer, back_populates='tax_info',
-    #                                 cascade='all, delete')
+
+class Identity(db.Model):
+    __tablename__ = 'test_identity'
+
+    id = db.Column(db.Integer, primary_key=True)
+    customer_id = db.Column(db.Integer, db.ForeignKey('test_customers.id', onupdate='CASCADE',
+                                                      ondelete='CASCADE'), nullable=False)
+    customer_name = db.Column(db.String(40), db.ForeignKey('test_customers.fullname', onupdate='CASCADE',
+                                                           ondelete='CASCADE'), nullable=False)
+
+    dob = db.Column(db.Date, nullable=False)
+    pan = db.Column(db.String(10), nullable=False, index=True)
+    aadhaar = db.Column(db.String(12))
+
+    identity_customer_info = db.relationship('Customer', back_populates='identity_info',
+                                             cascade='all, delete')
