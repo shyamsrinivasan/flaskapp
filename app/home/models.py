@@ -51,8 +51,8 @@ class Customer(UserMixin, db.Model):
     firstname = db.Column(db.String(20), nullable=False, index=True)
     lastname = db.Column(db.String(20), nullable=False, index=True)
     fullname = db.Column(db.String(40), index=True)
-    email = db.Column(db.String(30), index=True)
-    phone = db.Column(db.String(14))
+    # email = db.Column(db.String(30), index=True)
+    # phone = db.Column(db.String(14))
     type = db.Column(db.Enum('personal', 'commercial', name='customer_type'),
                      nullable=False, index=True)
     date_added = db.Column(db.DateTime(timezone=True), nullable=False,
