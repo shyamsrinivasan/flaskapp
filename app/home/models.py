@@ -153,21 +153,22 @@ class Billing(db.Model):
     __tablename__ = 'test_bills'
 
     id = db.Column(db.Integer, primary_key=True)
-    bill_no = db.Column(db.String(11), nullable=False, index=True)
-    customer_id = db.Column(db.Integer, db.ForeignKey('test_customers.id', onupdate='CASCADE',
-                                                      ondelete='CASCADE'), nullable=False)
+    bill_number = db.Column(db.String(11), nullable=False, index=True)
     customer_name = db.Column(db.String(30), db.ForeignKey('test_customers.fullname',
                                                            onupdate='CASCADE',
                                                            ondelete='CASCADE'),
                               nullable=False, index=True)
-    bill_date = db.Column(db.DateTime(timezone=True), nullable=False)
+    customer_id = db.Column(db.Integer, db.ForeignKey('test_customers.id', onupdate='CASCADE',
+                                                      ondelete='CASCADE'), nullable=False)
+    pan = db.Column(db.String(10), nullable=False, index=True)
+    # bill_date = db.Column(db.DateTime(timezone=True), nullable=False)
     # user_name = db.Column(db.String(40), db.ForeignKey('test_users.fullname', onupdate='CASCADE',
     #                                                    ondelete='CASCADE'), nullable=False)
-    user_name = db.Column(db.String(40), nullable=False)
-    item = db.Column(db.String(40), nullable=False)
-    price = db.Column(db.Float)
-    quantity = db.Column(db.Integer)
-    cost = db.Column(db.Float)
+    # user_name = db.Column(db.String(40), nullable=False)
+    bill_item = db.Column(db.String(40), nullable=False)
+    # price = db.Column(db.Float)
+    # quantity = db.Column(db.Integer)
+    item_cost = db.Column(db.Float)
 
     customer_id_info = db.relationship('Customer', foreign_keys="[Billing.customer_id]",
                                        back_populates='bill_info',
