@@ -165,10 +165,11 @@ class Billing(db.Model):
     # user_name = db.Column(db.String(40), db.ForeignKey('test_users.fullname', onupdate='CASCADE',
     #                                                    ondelete='CASCADE'), nullable=False)
     # user_name = db.Column(db.String(40), nullable=False)
-    bill_item = db.Column(db.String(40), nullable=False)
+    items = db.relationship('Items')
+    # bill_item = db.Column(db.String(40), nullable=False)
     # price = db.Column(db.Float)
     # quantity = db.Column(db.Integer)
-    item_cost = db.Column(db.Float)
+    # item_cost = db.Column(db.Float)
 
     customer_id_info = db.relationship('Customer', foreign_keys="[Billing.customer_id]",
                                        back_populates='bill_info',
@@ -176,8 +177,22 @@ class Billing(db.Model):
     customer_name_info = db.relationship('Customer', foreign_keys="[Billing.customer_name]")
 
     def __repr__(self):
-        return f"Billing(id={self.id!r}, name={self.customer_name!r}, date={self.bill_date!r}, " \
+        return f"Billing(id={self.id!r}, name={self.customer_name!r}, " \
                f"bill_no={self.bill_no!r}, cost={self.cost!r})"
+
+
+class Items(db.Model):
+    __tablename__ = 'test_items'
+
+    id = db.Column(db.Integer, primary_key=True)
+    bill_id = db.Column(db.String(11), db.ForeignKey('test_bills.bill_number',
+                                                     ondelete='CASCADE'))
+    bill_item = db.Column(db.String(40), nullable=False)
+    item_cost = db.Column(db.Float)
+
+    def __repr__(self):
+        return f"Billing(id={self.id!r}, bill number={self.bill_id!r}, item={self.bill_item!r}, " \
+               f"cost={self.item_cost!r})"
 
 
 class TaxInfo(db.Model):
